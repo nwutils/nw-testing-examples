@@ -1,0 +1,5 @@
+{
+    "name": "nw-selenium-example",
+    "main": "index.html",
+    "type": "module"
+}
