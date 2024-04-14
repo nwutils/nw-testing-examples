@@ -27,7 +27,8 @@ describe('NW.js Selenium Builder test suite', async () => {
 
         options.addArguments(seleniumArguments);
 
-        options.setChromeBinaryPath(findpath());
+        const nwPath = await findpath('nwjs', { flavor: 'sdk' });
+        options.setChromeBinaryPath(nwPath);
 
         /* Create a new session using the Chromium options and DriverService defined above. */
         driver = new selenium
