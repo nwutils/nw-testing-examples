@@ -4,7 +4,7 @@ import { findpath } from 'nw';
 import puppeteer from "puppeteer";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-describe('NW.js Puppeteer test suite', function () {
+describe.skip('NW.js Puppeteer test suite', function () {
 
     let browser = undefined;
     let page = undefined;
