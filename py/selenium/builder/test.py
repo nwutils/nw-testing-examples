@@ -21,14 +21,14 @@ class TestWindow(TestCase):
 
         # We are using the nw node module to download NW.js
         # Change the path as necessary
-        chromedriver_path = "./node_modules/nw/nwjs/chromedriver"
+        chromedriver_path = "./node_modules/nw/nwjs/nw/chromedriver" + (".exe" if sys.platform == "win" else "")
 
         if sys.platform == "win":
             chromedriver_path += ".exe"
         
         options = webdriver.ChromeOptions()
         # File path to NW.js project
-        options.add_argument("nwapp=" + pwd)
+        options.add_argument("nwapp=" + "./py/selenium/builder")
         # Useful if running in CI
         options.add_argument("headless=new")
 

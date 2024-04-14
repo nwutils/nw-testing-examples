@@ -16,7 +16,10 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [macos-12, ubuntu-22.04, windows-2022]
+        os:
+        - macos-12
+        - ubuntu-22.04
+        - windows-2022
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
@@ -38,7 +41,7 @@ jobs:
       - name: Run Node tests
         run: npm t
       - name: Install pipenv
-        run: pip install pipenv
+        run: python3 -m pip install pipenv
       - name: Install Pip dependencies
         run: python3 -m pipenv install
       - name: Run Python tests
