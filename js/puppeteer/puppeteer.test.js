@@ -4,7 +4,7 @@ import { findpath } from 'nw';
 import puppeteer from "puppeteer";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-describe('NW.js Puppeteer test suite', async () => {
+describe('NW.js Puppeteer test suite', function () {
 
     let browser = undefined;
     let page = undefined;
@@ -17,6 +17,9 @@ describe('NW.js Puppeteer test suite', async () => {
             headless: true,
             ignoreDefaultArgs: true,
             executablePath: findpath(),
+            env: {
+                DISPLAY: ':10',
+            },
             /* Specify file path to NW.js app */
             args: [`--nwapp=${path.resolve('js', 'puppeteer')}`],
         });
