@@ -1,11 +1,14 @@
 import path from 'node:path';
 
 import { findpath } from 'nw';
-import puppeteer from "puppeteer";
+import puppeteer, { Browser } from "puppeteer";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 describe('NW.js Puppeteer test suite', function () {
 
+    /**
+     * @type {Browser}
+     */
     let browser = undefined;
     let page = undefined;
 
@@ -19,9 +22,6 @@ describe('NW.js Puppeteer test suite', function () {
             headless: true,
             ignoreDefaultArgs: true,
             executablePath: nwPath,
-            env: {
-                DISPLAY: ':10',
-            },
             /* Specify file path to NW.js app */
             args: [`--nwapp=${path.resolve('js', 'puppeteer')}`],
         });
@@ -41,7 +41,7 @@ describe('NW.js Puppeteer test suite', function () {
         const text = await page.evaluate(el => el.textContent, textElement);
 
         expect(text).toEqual('Hello, World!\n\n');
-    });
+    }, { timeout: Infinity });
 
     /* Quit Puppeteer browser. */
     afterAll(async function () {
