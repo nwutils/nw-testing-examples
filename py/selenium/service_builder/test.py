@@ -4,6 +4,8 @@ from unittest import TestCase
 
 from selenium import webdriver
 
+from pathlib import Path
+
 '''
 NW.js Selenium test suite example
 '''
@@ -15,14 +17,16 @@ class TestWindow(TestCase):
     def setUp(self):
         # We are using the nw node module to download NW.js
         # Change the path as necessary
-        chromedriver_path = "./node_modules/nw/nwjs/chromedriver"
+        # "./node_modules/nw/nwjs/chromedriver"
+        chromedriver_path = Path('node_modules', 'nw', 'nwjs', 'chromedriver')
+        chromedriver_path = str(chromedriver_path.resolve())
 
         if sys.platform == "win":
             chromedriver_path += ".exe"
         
         options = webdriver.ChromeOptions()
         # File path to NW.js project
-        options.add_argument("nwapp=" + "py/selenium/builder")
+        options.add_argument("nwapp=" + str(Path('py', 'selenium', 'service_builder').resolve()))
         # Useful if running in CI
         options.add_argument("headless=new")
 
