@@ -13,12 +13,6 @@ class TestWindow(TestCase):
     Setup Selenium driver.
     '''
     def setUp(self):
-
-        # Set NW.js project root to present working directory
-        # NW.js project requires an index.html and package.json
-        pwd = os.path.dirname(os.path.abspath(__file__))
-        sys.path.append(pwd)
-
         # We are using the nw node module to download NW.js
         # Change the path as necessary
         chromedriver_path = "./node_modules/nw/nwjs/chromedriver"
@@ -28,7 +22,7 @@ class TestWindow(TestCase):
         
         options = webdriver.ChromeOptions()
         # File path to NW.js project
-        options.add_argument("nwapp=" + "./py/selenium/builder")
+        options.add_argument("nwapp=" + "py/selenium/builder")
         # Useful if running in CI
         options.add_argument("headless=new")
 
