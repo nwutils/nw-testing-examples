@@ -21,7 +21,7 @@ class TestWindow(TestCase):
 
         # We are using the nw node module to download NW.js
         # Change the path as necessary
-        chromedriver_path = "./node_modules/nw/nwjs/nw/chromedriver" + (".exe" if sys.platform == "win" else "")
+        chromedriver_path = "./node_modules/nw/nwjs/chromedriver"
 
         if sys.platform == "win":
             chromedriver_path += ".exe"
