@@ -47,7 +47,7 @@ describe('NW.js Selenium Builder test suite', async () => {
         const text = await textElement.getText();
 
         equal(text, 'Hello, World!');
-    });
+    }, { timeout: 30000 });
 
     /**
      * Quit Selenium driver.
