@@ -40,9 +40,7 @@ jobs:
         run: npm ci
       - name: Run Node tests
         run: npm t
-      - name: Install pipenv
-        run: python3 -m pip install pipenv
       - name: Install Pip dependencies
-        run: python3 -m pipenv install
+        run: python3 -m pip install -r requirements.txt
       - name: Run Python tests
-        run: python3 -m pipenv run pytest ./py/selenium/service_builder/test.py
+        run: python3 -m pytest ./py/selenium/service_builder/test.py
