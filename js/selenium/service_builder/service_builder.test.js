@@ -26,8 +26,9 @@ describe('NW.js Selenium ServiceBuilder test suite', async () => {
 
         options.addArguments(seleniumArguments);
 
+        const chromeDriverPath = await findpath('chromedriver', { flavor: 'sdk' });
         /* Pass file path of NW.js ChromeDriver to ServiceBuilder */
-        const service = new chrome.ServiceBuilder(findpath('chromedriver')).build();
+        const service = new chrome.ServiceBuilder(chromeDriverPath).build();
 
         /* Create a new session using the Chromium options and DriverService defined above. */
         driver = chrome.Driver.createSession(options, service);
