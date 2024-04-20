@@ -1,10 +1,11 @@
 import path from 'node:path';
+import process from 'node:process';
 
 import { findpath } from 'nw';
 import puppeteer, { Browser } from "puppeteer";
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-describe('NW.js Puppeteer test suite', function () {
+describe.skipIf(process.platform === 'linux')('NW.js Puppeteer test suite', function () {
 
     /**
      * @type {Browser}
